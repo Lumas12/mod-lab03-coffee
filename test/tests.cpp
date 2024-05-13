@@ -13,7 +13,7 @@ TEST_F(AutomataTest, InitialState_1) {
 
 TEST_F(AutomataTest, TurnOnAndOff_2) {
     one.on();
-    EXPECT_EQ(one.getState(), Automata::STATES::WAIT);
+    EXPECT_EQ(one.getState(), Automata::STATES::CHECK);
     one.off();
     EXPECT_EQ(one.getState(), Automata::STATES::OFF);
 }
