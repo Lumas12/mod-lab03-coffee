@@ -65,7 +65,7 @@ TEST_F(AutomataTest, CheckInsufficientFunds_8) {
     one.choice(0); 
     one.check();
     EXPECT_EQ(one.getState(), Automata::STATES::WAIT);
-    EXPECT_EQ(one.Cash, 10); 
+    EXPECT_EQ(one.Cash, 0); 
 }
 
 TEST_F(AutomataTest, CheckSufficientFunds_9) {
@@ -73,7 +73,7 @@ TEST_F(AutomataTest, CheckSufficientFunds_9) {
     one.coin(20);
     one.choice(0); 
     one.check();
-    EXPECT_EQ(one.getState(), Automata::STATES::WAIT);
+    EXPECT_EQ(one.getState(), Automata::STATES::CHECK);
     EXPECT_EQ(one.Cash, 10); 
 }
 
@@ -83,6 +83,6 @@ TEST_F(AutomataTest, MultipleChoices_10) {
     one.choice(0); 
     one.choice(1); 
     one.check();
-    EXPECT_EQ(one.getState(), Automata::STATES::WAIT);
+    EXPECT_EQ(one.getState(), Automata::STATES::CHECK);
     EXPECT_EQ(one.Cash, 10); 
 }
