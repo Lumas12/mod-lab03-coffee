@@ -31,7 +31,7 @@ class Automata {
         COOK
     };
 
- private:
+ public:
     size_t Choice;
     double Cash;
     std::array<std::string, 10> Menu;
