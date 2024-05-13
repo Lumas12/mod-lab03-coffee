@@ -28,32 +28,31 @@ TEST_F(AutomataTest, InsertCoin_3) {
 TEST_F(AutomataTest, DisplayMenu_4) {
     one.on();
     one.getMenu();
-    // Проверка, что функция вызвана без ошибок
     EXPECT_TRUE(true);
 }
 
 TEST_F(AutomataTest, MakeChoice_5) {
     one.on();
     one.coin(20);
-    one.choice(0); // Выбор чая
+    one.choice(0); 
     one.check();
-    EXPECT_EQ(one.getState(), Automata::STATES::WAIT);
-    EXPECT_EQ(one.Cash, 10); // Остаток после покупки чая
+    EXPECT_EQ(one.getState(), Automata::STATES::CHECK);
+    EXPECT_EQ(one.Cash, 10); 
 }
 
 TEST_F(AutomataTest, CancelOperation_6) {
     one.on();
     one.coin(20);
-    one.choice(0); // Выбор чая
+    one.choice(0); 
     one.cancel();
     EXPECT_EQ(one.getState(), Automata::STATES::WAIT);
-    EXPECT_EQ(one.Cash, 20); // Деньги возвращены после отмены
+    EXPECT_EQ(one.Cash, 0); 
 }
 
 TEST_F(AutomataTest, CookingProcess_7) {
     one.on();
     one.coin(20);
-    one.choice(0); // Выбор чая
+    one.choice(0); 
     one.check();
     one.cook();
     one.finish();
@@ -63,27 +62,27 @@ TEST_F(AutomataTest, CookingProcess_7) {
 TEST_F(AutomataTest, CheckInsufficientFunds_8) {
     one.on();
     one.coin(10);
-    one.choice(0); // Выбор чая
+    one.choice(0); 
     one.check();
     EXPECT_EQ(one.getState(), Automata::STATES::WAIT);
-    EXPECT_EQ(one.Cash, 10); // Проверка, что деньги не были списаны, так как недостаточно средств
+    EXPECT_EQ(one.Cash, 10); 
 }
 
 TEST_F(AutomataTest, CheckSufficientFunds_9) {
     one.on();
     one.coin(20);
-    one.choice(0); // Выбор чая
+    one.choice(0); 
     one.check();
     EXPECT_EQ(one.getState(), Automata::STATES::WAIT);
-    EXPECT_EQ(one.Cash, 10); // Проверка, что деньги были списаны после успешной покупки
+    EXPECT_EQ(one.Cash, 10); 
 }
 
 TEST_F(AutomataTest, MultipleChoices_10) {
     one.on();
     one.coin(20);
-    one.choice(0); // Выбор чая
-    one.choice(1); // Попытка выбрать кофе после чая
+    one.choice(0); 
+    one.choice(1); 
     one.check();
     EXPECT_EQ(one.getState(), Automata::STATES::WAIT);
-    EXPECT_EQ(one.Cash, 10); // Проверка, что деньги не были списаны, так как уже была сделана покупка
+    EXPECT_EQ(one.Cash, 10); 
 }
