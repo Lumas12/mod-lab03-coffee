@@ -20,8 +20,7 @@ class Automata {
     void check();
     void cancel();
     void cook();
-    void finish();    
-
+    void finish();
  public:
     enum STATES {
         OFF,
