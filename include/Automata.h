@@ -21,6 +21,7 @@ class Automata {
     void cancel();
     void cook();
     void finish();
+
  public:
     enum STATES {
         OFF,
