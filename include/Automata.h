@@ -22,7 +22,7 @@ class Automata {
     void cook();
     void finish();    
 
- private:
+ public:
     enum STATES {
         OFF,
         WAIT,
