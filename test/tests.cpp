@@ -13,7 +13,7 @@ TEST_F(AutomataTest, InitialState_1) {
 
 TEST_F(AutomataTest, TurnOnAndOff_2) {
     one.on();
-    EXPECT_EQ(one.getState(), Automata::STATES::CHECK);
+    EXPECT_EQ(one.getState(), Automata::STATES::WAIT);
     one.off();
     EXPECT_EQ(one.getState(), Automata::STATES::OFF);
 }
@@ -64,7 +64,7 @@ TEST_F(AutomataTest, CheckInsufficientFunds_8) {
     one.coin(10);
     one.choice(0); 
     one.check();
-    EXPECT_EQ(one.getState(), Automata::STATES::WAIT);
+    EXPECT_EQ(one.getState(), Automata::STATES::CHECK);
     EXPECT_EQ(one.Cash, 0); 
 }
 
