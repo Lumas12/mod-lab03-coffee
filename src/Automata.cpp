@@ -1,4 +1,5 @@
-// Copyright 2022 UNN-IASR
+//Copyright 2022 UNN-IASR
+
 #include "../include/Automata.h"
 
 Automata::Automata() {
@@ -15,21 +16,21 @@ Automata::Automata() {
 void Automata::on() {
     if (State == STATES::OFF) {
         State = STATES::WAIT;
-    }       
-        getMenu();    
+    }
+    getMenu();
 }
 
 void Automata::off() {
-    if (State == STATES::WAIT) {      
+    if (State == STATES::WAIT) {
         State = STATES::OFF;
-    } 
+    }
 }
 
 void Automata::coin(const int Coin) {
-    if (State == STATES::WAIT) {      
+    if (State == STATES::WAIT) {
         State = STATES::ACCEPT;
         Cash += Coin;
-    } 
+    }
 }
 
 void Automata::getMenu() {
@@ -45,35 +46,35 @@ int Automata::getState() {
 void Automata::choice(const int Choice) {
     if (State == STATES::ACCEPT) {
         State = STATES::CHECK;
-    } 
+    }
 }
 
 void Automata::check() {
-    if (State == STATES::CHECK) {      
+    if (State == STATES::CHECK) {
         if (Cash >= Prices.at(Choice)) {
             std::cout << "Достаточно денег" << std::endl;
             Cash -= Prices.at(Choice);
         } else {
             std::cout << "Не достаточно денег" << std::endl;
         }
-    } 
+    }
 }
 
 void Automata::cancel() {
     if (State == STATES::ACCEPT || State == STATES::CHECK) {
         State = STATES::WAIT;
         Cash = 0;
-    } 
+    }
 }
 
 void Automata::cook() {
     if (State == STATES::CHECK) {
         State = STATES::COOK;
-    } 
+    }
 }
 
 void Automata::finish() {
     if (State == STATES::COOK) {
         State = STATES::WAIT;
-    } 
+    }
 }
